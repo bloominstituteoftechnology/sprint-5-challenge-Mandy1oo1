@@ -112,11 +112,13 @@ describe('Sprint Challenge 5', () => {
       })
     })
     test('👉 [15] <ul> the mentors are hidden on page load', async () => {
-      await firstCardRender();
-      const cards = document.querySelectorAll('.card');
+      await firstCardRender()
+      const cards = document.querySelectorAll('.card')
       cards.forEach(c => {
-        const ul = c.querySelector('ul');
-        expect(getComputedStyle(ul).display).toBe('none'); // Check display property instead of className
+        const ul = c.querySelector('ul')
+        const h4 = c.querySelector('h4')
+        expect(ul).not.toBeVisible()
+        expect(h4.className).toBe('closed')
       });
     });
   })
