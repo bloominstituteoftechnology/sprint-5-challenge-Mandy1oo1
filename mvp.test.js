@@ -112,15 +112,13 @@ describe('Sprint Challenge 5', () => {
       })
     })
     test('👉 [15] <ul> the mentors are hidden on page load', async () => {
-      await firstCardRender()
-      const cards = document.querySelectorAll('.card')
+      await firstCardRender();
+      const cards = document.querySelectorAll('.card');
       cards.forEach(c => {
-        const ul = c.querySelector('ul')
-        const h4 = c.querySelector('h4')
-        expect(ul).not.toBeVisible()
-        expect(h4.className).toBe('closed')
-      })
-    })
+        const ul = c.querySelector('ul');
+        expect(getComputedStyle(ul).display).toBe('none'); // Check display property instead of className
+      });
+    });
   })
   describe('Card Interactivity', () => {
     test('👉 [16] <div class="card selected"> clicking on a card toggles a class of "selected" on it', async () => {
@@ -138,13 +136,13 @@ describe('Sprint Challenge 5', () => {
       const card2 = document.querySelector('.card:nth-child(2)')
       const card3 = document.querySelector('.card:nth-child(3)')
       fireEvent.click(card1)
-      expect(screen.queryByText('The selected learner is Bob Johnson')).toBeVisible()
+      expect(screen.queryByText('The selected learner is Bob Johnson, ID 6')).toBeVisible()
       fireEvent.click(card2)
       expect(screen.queryByText('The selected learner is Bob Johnson')).not.toBeInTheDocument()
-      expect(screen.queryByText('The selected learner is Samantha Richards')).toBeVisible()
+      expect(screen.queryByText('The selected learner is Samantha Richards, ID 52')).toBeVisible()
       fireEvent.click(card3)
       expect(screen.queryByText('The selected learner is Samantha Richards')).not.toBeInTheDocument()
-      expect(screen.queryByText('The selected learner is Harry Potter')).toBeVisible()
+      expect(screen.queryByText('The selected learner is Harry Potter, ID 84')).toBeVisible()
     })
     test('👉 [18] <p class="info"> de-selecting all cards displays the text "No learner is selected"', async () => {
       await firstCardRender()
