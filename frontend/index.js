@@ -104,16 +104,16 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
   
   
     function updateInfo() {
-      const info = document.querySelector('.info');
-      const selectedCard = document.querySelector('.card.selected');
-    
-      if (selectedCard) {
-        const name = selectedCard.querySelector('h3').textContent.split(',')[0]; // Extract only the name
-        info.textContent = `The selected learner is ${name}`;
-      } else {
-        info.textContent = 'No learner is selected';
-      }
-    }
+  const info = document.querySelector('.info');
+  const selectedCard = document.querySelector('.card.selected');
+
+  if (selectedCard) {
+    const name = selectedCard.querySelector('h3').textContent.split(',')[0]; // Extract only the name
+    info.textContent = `The selected learner is ${name}`;
+  } else {
+    info.textContent = 'No learner is selected';
+  }
+}
     
   
     renderLearnerCards();
