@@ -127,6 +127,8 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
       const mentorsLists = document.querySelectorAll('.card ul');
       mentorsLists.forEach(list => {
         list.style.display = 'none';
+        const heading = list.previousElementSibling; 
+        heading.classList.add('closed'); 
       });
     }
   }
